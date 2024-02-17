@@ -21,9 +21,9 @@ namespace Mission06_Halls.Migrations
                     Year = table.Column<int>(type: "INTEGER", nullable: false),
                     Director = table.Column<string>(type: "TEXT", nullable: false),
                     Rating = table.Column<string>(type: "TEXT", nullable: false),
-                    Edited = table.Column<bool>(type: "INTEGER", nullable: false),
+                    Edited = table.Column<bool>(type: "INTEGER", nullable: true),
                     LentTo = table.Column<string>(type: "TEXT", nullable: true),
-                    Notes = table.Column<string>(type: "TEXT", maxLength: 25, nullable: false)
+                    Notes = table.Column<string>(type: "TEXT", maxLength: 25, nullable: true)
                 },
                 constraints: table =>
                 {
