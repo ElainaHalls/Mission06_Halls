@@ -35,5 +35,13 @@ namespace Mission06_Halls.Controllers
         { 
             return View();
         }
+
+        public IActionResult MovieList ()
+        {
+           var applications = _context.Applications
+                .OrderBy(x => x.Title).ToList();
+
+            return View(applications);
+        }
     }
 }

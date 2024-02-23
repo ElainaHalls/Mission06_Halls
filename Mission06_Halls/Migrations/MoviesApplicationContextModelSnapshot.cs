@@ -22,9 +22,12 @@ namespace Mission06_Halls.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Category")
+                    b.Property<string>("CategoryId")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("CategoryId1")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Director")
                         .IsRequired()
@@ -55,7 +58,31 @@ namespace Mission06_Halls.Migrations
 
                     b.HasKey("ApplicationID");
 
+                    b.HasIndex("CategoryId1");
+
                     b.ToTable("Applications");
+                });
+
+            modelBuilder.Entity("Mission06_Halls.Models.Category", b =>
+                {
+                    b.Property<int>("CategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("CategoryId");
+
+                    b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("Mission06_Halls.Models.Application", b =>
+                {
+                    b.HasOne("Mission06_Halls.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
                 });
 #pragma warning restore 612, 618
         }

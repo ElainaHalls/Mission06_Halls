@@ -9,5 +9,8 @@ namespace Mission06_Halls.Models
         }
 
         public DbSet<Application> Applications { get; set; }
+        public DbSet<Category> Categories { get; set; }
+
+        
     }
 }
